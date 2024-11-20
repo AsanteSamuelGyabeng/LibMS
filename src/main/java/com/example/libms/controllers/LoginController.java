@@ -45,12 +45,12 @@ public class LoginController {
      *
      * @throws SQLException the sql exception
      */
-    public LoginController() throws SQLException {
+    public LoginController() throws SQLException, ClassNotFoundException {
         this.userModel = new UserModel();
     }
 
     @FXML
-    private void handleLogin(ActionEvent event) {
+    private void handleLogin(ActionEvent event) throws ClassNotFoundException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -87,7 +87,7 @@ public class LoginController {
      *
      * @authentiateUser
      * */
-    private boolean authenticateUser(String username, String password) {
+    private boolean authenticateUser(String username, String password) throws ClassNotFoundException {
         // SQL query to check if the username and password exist in the database
         String sql = "SELECT * FROM staff WHERE username = ? AND password = ?";
 

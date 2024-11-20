@@ -10,7 +10,7 @@ public class UserModel {
     // Use the static method to get the connection
     private Connection connection;
 
-    public UserModel() throws SQLException {
+    public UserModel() throws SQLException, ClassNotFoundException {
         this.connection = DB.getConnection();
     }
 

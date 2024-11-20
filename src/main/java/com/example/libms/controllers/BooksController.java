@@ -63,7 +63,7 @@ public class BooksController {
     private Button clearButton;
 
     // Initialize method
-    public void initialize() {
+    public void initialize() throws ClassNotFoundException {
         // Initialize the table columns
         bookIdColumn.setCellValueFactory(cellData -> cellData.getValue().bookIdProperty().asObject());
         titleColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
@@ -79,14 +79,14 @@ public class BooksController {
     }
 
     // Load all books from the database
-    private void loadBooks() {
+    private void loadBooks() throws ClassNotFoundException {
         ObservableList<Book> books = Book.getAllBooks();
         booksTable.setItems(books);
     }
 
     // Add a new book
     @FXML
-    private void handleAddBook() {
+    private void handleAddBook() throws ClassNotFoundException {
         String title = titleField.getText();
         String genre = genreField.getText();
         String isbn = isbnField.getText();
@@ -109,7 +109,7 @@ public class BooksController {
 
     // Update an existing book
     @FXML
-    private void handleUpdateBook() {
+    private void handleUpdateBook() throws ClassNotFoundException {
         Book selectedBook = booksTable.getSelectionModel().getSelectedItem();
         if (selectedBook == null) {
             showAlert("Error", "No book selected.", Alert.AlertType.ERROR);
@@ -136,7 +136,7 @@ public class BooksController {
 
     // Delete a book
     @FXML
-    private void handleDeleteBook() {
+    private void handleDeleteBook() throws ClassNotFoundException {
         Book selectedBook = booksTable.getSelectionModel().getSelectedItem();
         if (selectedBook == null) {
             showAlert("Error", "No book selected.", Alert.AlertType.ERROR);
@@ -155,7 +155,7 @@ public class BooksController {
     }
 
     @FXML
-    private void handleSearchBook() {
+    private void handleSearchBook() throws ClassNotFoundException {
         String isbn = searchIsbnField.getText(); // Get the ISBN entered by the user
 
         if (isbn == null || isbn.isEmpty()) {
