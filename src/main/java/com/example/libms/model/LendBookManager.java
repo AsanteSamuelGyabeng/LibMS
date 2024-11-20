@@ -11,13 +11,11 @@ import java.sql.SQLException;
 
 public class LendBookManager {
 
-    // Method to lend a book
     public void lendBook(int bookId, String studentName, int staffId, Date lendDate, Date returnDate) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
 
         try {
-            // Establish database connection
             conn = DB.getConnection();
 
             // SQL query to insert the lending record

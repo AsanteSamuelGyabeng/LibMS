@@ -19,8 +19,7 @@ public class DB {
         String password = dotenv.get("DB_PASSWORD");
 
         try {
-            Connection connection = DriverManager.getConnection(
-                    url, username, password);
+            Connection connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connected successfully");
             return connection;
         } catch (SQLException e) {

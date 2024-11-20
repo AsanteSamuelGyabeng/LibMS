@@ -45,9 +45,9 @@ public class LoginController {
      *
      * @throws SQLException the sql exception
      */
-    public LoginController() throws SQLException {
-        this.userModel = new UserModel();
-    }
+//    public LoginController() throws SQLException {
+//        this.userModel = new UserModel();
+//    }
 
     @FXML
     private void handleLogin(ActionEvent event) {
