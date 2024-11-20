@@ -22,10 +22,9 @@ public class UserModel {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
 
-            // If a matching user is found, return true
-            return rs.next();
+            return rs.next();// If a matching user is found, return true
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         return false;
     }

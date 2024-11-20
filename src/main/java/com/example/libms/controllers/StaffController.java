@@ -54,7 +54,7 @@ public class StaffController {
                 }
             } catch (SQLException e) {
                 showAlert("Database Error", "An error occurred: " + e.getMessage());
-                e.printStackTrace();
+                System.err.println(e.getMessage());
             }
         }
     }

@@ -139,7 +139,7 @@ public class Book {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
 
         return bookList;
@@ -161,7 +161,7 @@ public class Book {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return false;
         }
     }
@@ -182,7 +182,7 @@ public class Book {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return false;
         }
     }
@@ -198,7 +198,7 @@ public class Book {
             return rowsAffected > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return false;
         }
     }
@@ -221,7 +221,7 @@ public class Book {
                 return new Book(bookId, title, genre, isbn, isAvailable, copies);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         return null; // Return null if no book is found
     }
