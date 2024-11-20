@@ -21,7 +21,6 @@ public class Landing extends Application {
         splashStage.setScene(splashScene);
         splashStage.show();
 
-        // delay for 5 seconds
         PauseTransition pause = new PauseTransition(Duration.seconds(5));
         pause.setOnFinished(event -> {
             try {

@@ -40,7 +40,7 @@ public class LibraryDashboardController {
     /**
      * Sets the username of the staff member
      */
-    public void setUsername(String username) throws SQLException {
+    public void setUsername(String username) throws SQLException, ClassNotFoundException {
         welcomeLabel.setText("Welcome, " + username + "!");
         staffMember = username;
 
@@ -79,7 +79,7 @@ public class LibraryDashboardController {
         btnMembers.setOnAction(e -> {
             try {
                 switchContent(createMembersPane());
-            } catch (SQLException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
         });
@@ -106,7 +106,7 @@ public class LibraryDashboardController {
     /**
      * Creates a pane for member registration
      */
-    private Pane createMembersPane() throws SQLException {
+    private Pane createMembersPane() throws SQLException, ClassNotFoundException {
         VBox pane = new VBox(15);
         pane.setPadding(new Insets(20));
         Label membersPanelLabel = new Label("Staff Registration");
@@ -178,6 +178,8 @@ public class LibraryDashboardController {
             } catch (IllegalArgumentException ex) {
                 ex.printStackTrace();
                 System.out.println("Invalid date format. Please enter a valid date.");
+            } catch (ClassNotFoundException ex) {
+                throw new RuntimeException(ex);
             }
         });
 
@@ -211,6 +213,8 @@ public class LibraryDashboardController {
             } else {
                 System.out.println("Failed to lend the book.");
             }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -24,7 +24,7 @@ public class StaffController {
     private Connection connection;
 
     // Constructor initializes the database connection
-    public StaffController() throws SQLException {
+    public StaffController() throws SQLException, ClassNotFoundException {
         this.connection = DB.getConnection(); // Get connection from DB utility
     }
 

@@ -118,8 +118,12 @@ public class Book {
         this.copies.set(copies); // Sets the value of copies
     }
 
-    // Fetch books from the database (as you had it before)
-    public static ObservableList<Book> getAllBooks() {
+    /**
+     * fetching a book from the database
+     * @return
+     * @throws ClassNotFoundException
+     */
+    public static ObservableList<Book> getAllBooks() throws ClassNotFoundException {
         ObservableList<Book> bookList = FXCollections.observableArrayList();
         String sql = "SELECT * FROM books";
 
@@ -144,9 +148,13 @@ public class Book {
 
         return bookList;
     }
-    // Add a book to the database
-    // Add a new book to the database
-    public boolean addBook() {
+
+    /**
+     * Adding a book to the database
+     * @return
+     * @throws ClassNotFoundException
+     */
+    public boolean addBook() throws ClassNotFoundException {
         String sql = "INSERT INTO books (title, genre, isbn, is_available, copies) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = DB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -166,8 +174,12 @@ public class Book {
         }
     }
 
-    // Update a book in the database
-    public boolean updateBook() {
+    /**
+     * @updateBook updates the book in the database
+      * @return
+     * @throws ClassNotFoundException
+     */
+    public boolean updateBook() throws ClassNotFoundException {
         String sql = "UPDATE books SET title = ?, genre = ?, is_available = ?, copies = ? WHERE isbn = ?";
         try (Connection connection = DB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -187,8 +199,12 @@ public class Book {
         }
     }
 
-    // Delete a book from the database
-    public boolean deleteBook() {
+    /**
+     * @deleteBook - Deletes a book from the database
+     * @return
+     * @throws ClassNotFoundException
+     */
+    public boolean deleteBook() throws ClassNotFoundException {
         String sql = "DELETE FROM books WHERE isbn = ?";
         try (Connection connection = DB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -202,8 +218,14 @@ public class Book {
             return false;
         }
     }
-    // Search for a book by ISBN
-    public static Book searchBookByIsbn(String isbn) {
+
+    /**
+     * @searchBookByIsbn - Searches a book by isbn
+     * @param isbn
+     * @return
+     * @throws ClassNotFoundException
+     */
+    public static Book searchBookByIsbn(String isbn) throws ClassNotFoundException {
         String sql = "SELECT * FROM books WHERE isbn = ?";
         try (Connection connection = DB.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -223,7 +245,7 @@ public class Book {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; // Return null if no book is found
+        return null;
     }
 
 
