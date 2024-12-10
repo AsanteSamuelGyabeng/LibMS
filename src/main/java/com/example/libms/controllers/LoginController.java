@@ -45,9 +45,9 @@ public class LoginController {
      *
      * @throws SQLException the sql exception
      */
-    public LoginController() throws SQLException {
-        this.userModel = new UserModel();
-    }
+//    public LoginController() throws SQLException {
+//        this.userModel = new UserModel();
+//    }
 
     @FXML
     private void handleLogin(ActionEvent event) {
@@ -71,7 +71,7 @@ public class LoginController {
                 stage.setTitle("Library Dashboard");
                 stage.show();
             } catch (IOException | SQLException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to load the dashboard.");
             }
         } else {
@@ -102,7 +102,7 @@ public class LoginController {
                 return true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             showAlert(AlertType.ERROR, "Database Error", "An error occurred while verifying credentials.");
         }
 
