@@ -2,8 +2,8 @@ module com.example.libms {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires java.dotenv;
     requires io.github.cdimascio.dotenv.java;
+
 
 
     opens com.example.libms to javafx.fxml;

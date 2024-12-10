@@ -10,8 +10,9 @@ public class DB {
 
 
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
 
+        Class.forName("com.mysql.cj.jdbc.Driver");
         Dotenv dotenv = Dotenv.load();
 
         String url = dotenv.get("DB_URL");
