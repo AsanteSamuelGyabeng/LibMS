@@ -15,21 +15,22 @@ public class Landing extends Application {
         Stage splashStage = new Stage();
         splashStage.initStyle(StageStyle.UNDECORATED);
 
-        // the splash screen FXML
         FXMLLoader splashLoader = new FXMLLoader(Landing.class.getResource("hello-view.fxml"));
         Scene splashScene = new Scene(splashLoader.load(), 600 , 400);
         splashStage.setScene(splashScene);
         splashStage.show();
-
-        PauseTransition pause = new PauseTransition(Duration.seconds(5));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(event -> {
+            splashStage.close();
+
             try {
-                splashStage.close();
+
                 FXMLLoader mainLoader = new FXMLLoader(Landing.class.getResource("login.fxml"));
                 Scene mainScene = new Scene(mainLoader.load(), 620, 500);
                 primaryStage.setScene(mainScene);
                 primaryStage.setTitle("Login");
                 primaryStage.show();
+                splashStage.close();
             } catch (Exception e) {
                 showAlert("Error", "An error occurred while loading the main stage: " + e.getMessage());
             }

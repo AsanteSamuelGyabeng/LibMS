@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SceneController {
     private Stage stage;
@@ -16,7 +17,7 @@ public class SceneController {
 
 
     public void toLogin(ActionEvent event) throws IOException {
-         root = FXMLLoader.load(getClass().getResource("login.fxml"));
+         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
          stage = (Stage)((Node)event.getSource()).getScene().getWindow();
          scene = new Scene(root);
          stage.setScene(scene);
@@ -24,7 +25,7 @@ public class SceneController {
     }
 
     public void toSignup(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("sign-up.fxml"));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sign-up.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
